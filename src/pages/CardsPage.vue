@@ -1,7 +1,7 @@
 <template>
-    <div>
-      Home Page
-    </div>
+  <div>
+    Cards Page
+  </div>
 </template>
 
 <script setup lang="ts">
