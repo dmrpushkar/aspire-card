@@ -26,7 +26,7 @@ const isActive = (path: string) => route.path === path
 .mobile-nav-container {
   display: flex;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: white;
   padding: 8px 0;
   position: fixed;
   bottom: 0;
@@ -39,7 +39,7 @@ const isActive = (path: string) => route.path === path
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #c4c4c4;
+  color: var(--light-grey-color);
 }
 
 .nav-icon {
@@ -54,6 +54,6 @@ const isActive = (path: string) => route.path === path
 }
 
 .mobile-nav-item.active .nav-icon {
-  filter: brightness(0) saturate(100%) invert(53%) sepia(47%) saturate(585%) hue-rotate(95deg) brightness(90%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(57%) sepia(67%) saturate(488%) hue-rotate(84deg) brightness(94%) contrast(89%);
 }
 </style>

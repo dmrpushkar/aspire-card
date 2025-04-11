@@ -44,11 +44,11 @@ import { NAV_ITEMS } from '../constants'
   margin-bottom: 62px;
 
   .logo-image {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
 
   .logo-text {
-    color: #7c8ba1;
+    color: var(--gray-text-color);
     font-size: 15px;
     line-height: 1.4;
   }
