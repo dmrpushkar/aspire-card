@@ -44,7 +44,6 @@ import { NAV_ITEMS } from '../constants'
   margin-bottom: 62px;
 
   .logo-image {
-    width: 120px;
     margin-bottom: 12px;
   }
 
@@ -61,7 +60,7 @@ import { NAV_ITEMS } from '../constants'
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 64px;
 }
 
 .nav-item {
