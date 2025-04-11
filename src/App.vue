@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--mobile-breakpoint)) {
   .app-container {
     flex-direction: column;
   }

@@ -1,13 +1,16 @@
 <template>
   <nav class="navbar-container">
     <div class="web-only">
+      <div class="logo-section">
+        <img src="../assets/aspire-logo-full.png" alt="Aspire Logo" class="logo-image" />
+        <p class="logo-text">Trusted way of banking for 3,000+ SMEs and startups in Singapore</p>
+      </div>
+
       <ul class="nav-list">
-        <li v-for="item in NAV_ITEMS" :key="item.name">
-          <RouterLink :to="item.path">
-            <div>
-              <span>{{ item.icon }}</span>
-              <span>{{ item.name }}</span>
-            </div>
+        <li v-for="item in NAV_ITEMS" :key="item.name" class="nav-item">
+          <RouterLink :to="item.path" class="nav-link">
+            <img :src="item.icon" :alt="item.name + ' icon'" class="nav-icon" />
+            <span class="nav-text">{{ item.name }}</span>
           </RouterLink>
         </li>
       </ul>
@@ -19,25 +22,75 @@
 import { NAV_ITEMS } from '../constants'
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .navbar-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: var(--primary-background-color);
+}
+
+.web-only {
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  min-width: 340px;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 62px;
+
+  .logo-image {
+    width: 120px;
+    margin-bottom: 12px;
+  }
+
+  .logo-text {
+    color: #7c8ba1;
+    font-size: 15px;
+    line-height: 1.4;
+  }
 }
 
 .nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.web-only {
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
-  padding: 16px;
-  min-width: 200px;
+  gap: 32px;
+}
+
+.nav-item {
+  .nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 16px;
+
+    &.router-link-active .nav-text {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    &.router-link-active .nav-icon {
+      filter: brightness(0) saturate(100%) invert(57%) sepia(67%) saturate(488%) hue-rotate(84deg) brightness(94%) contrast(89%);
+    }
+  }
+
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-text {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {

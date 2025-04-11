@@ -1,3 +1,9 @@
+import HomeIcon from '../assets/home-icon.svg';
+import CardsIcon from '../assets/cards-icon.svg';
+import PaymentsIcon from '../assets/payments-icon.png';
+import CreditIcon from '../assets/credit-icon.png';
+import SettingsIcon from '../assets/settings-icon.png';
+
 export const ROUTES = {
   HOME: '/',
   CARDS: '/cards',
@@ -7,11 +13,11 @@ export const ROUTES = {
 };
 
 export const NAVBAR_ICONS = {
-  HOME: '🏠',
-  CARDS: '💳',
-  PAYMENTS: '💰',
-  CREDIT: '💳',
-  SETTINGS: '⚙️',
+  HOME: HomeIcon,
+  CARDS: CardsIcon,
+  PAYMENTS: PaymentsIcon,
+  CREDIT: CreditIcon,
+  SETTINGS: SettingsIcon,
 };
 
 export const APP_CONFIG = {
