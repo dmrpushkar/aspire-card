@@ -15,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import CardsCarousel from './cards-carousel'
-import CardActions from './card-actions'
-import TransactionList from './transactions-list'
+import CardsCarousel from './cards-carousel';
+import CardActions from './card-actions';
+import TransactionList from './transactions-list';
 </script>
 
 <style scoped>
@@ -25,9 +25,8 @@ import TransactionList from './transactions-list'
   border: 1px dashed #ccc;
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--mobile-breakpoint)) {
   .cards-tab {
-
   }
 }
 </style>

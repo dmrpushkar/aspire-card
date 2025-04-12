@@ -77,14 +77,14 @@ import { NAV_ITEMS } from '../constants'
     }
 
     &.router-link-active .nav-icon {
-      filter: brightness(0) saturate(100%) invert(57%) sepia(67%) saturate(488%) hue-rotate(84deg) brightness(94%) contrast(89%);
+      filter: var(--primary-color-filter);
     }
   }
 
   .nav-icon {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1);
+    filter: var(--white-color-filter);
   }
 
   .nav-text {
@@ -92,7 +92,7 @@ import { NAV_ITEMS } from '../constants'
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--mobile-breakpoint)) {
   .web-only {
     display: none;
   }

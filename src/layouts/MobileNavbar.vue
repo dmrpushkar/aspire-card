@@ -46,7 +46,7 @@ const isActive = (path: string) => route.path === path
   width: 24px;
   height: 24px;
   margin-bottom: 4px;
-  filter: brightness(0) saturate(100%) invert(82%) sepia(0%) saturate(7478%) hue-rotate(182deg) brightness(92%) contrast(85%)
+  filter: var(--light-gray-color-filter);
 }
 
 .mobile-nav-item.active {
@@ -54,6 +54,6 @@ const isActive = (path: string) => route.path === path
 }
 
 .mobile-nav-item.active .nav-icon {
-  filter: brightness(0) saturate(100%) invert(57%) sepia(67%) saturate(488%) hue-rotate(84deg) brightness(94%) contrast(89%);
+  filter: var(--primary-color-filter);
 }
 </style>

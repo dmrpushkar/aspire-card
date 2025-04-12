@@ -1,10 +1,8 @@
 <template>
-  <div class="q-pa-md">
-    <div class="text-h6 q-mb-md">
-      <CardsHeader @update:tab="activeTab = $event" />
-    </div>
-      <MyCardsTab />
+  <div class="text-h6">
+    <CardsHeader @update:tab="activeTab = $event" />
   </div>
+  <MyCardsTab />
 </template>
 
 <script setup lang="ts">
