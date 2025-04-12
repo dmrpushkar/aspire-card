@@ -1,9 +1,8 @@
 // Color variables for the application
 :root {
   --primary-color: #01D167;
-  // --secondary-color: #FFC107;
-  // --text-color: #333333;
   --primary-background-color: #0C365A;
+  --secondary-background-color: #EDF3FF;
 
   --light-grey-color: #c4c4c4;
   --gray-text-color: #7c8ba1;
@@ -18,3 +17,5 @@
   --light-blue-color-filter: invert(65%) sepia(75%) saturate(1753%) hue-rotate(177deg) brightness(103%) contrast(101%);
   --light-gray-color-filter: brightness(0) saturate(100%) invert(82%) sepia(0%) saturate(7478%) hue-rotate(182deg) brightness(92%) contrast(85%);
 }
+
+$mobile-breakpoint: 768px;

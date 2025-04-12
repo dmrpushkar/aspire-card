@@ -1,40 +1,67 @@
 <template>
-  <q-card flat class="q-pa-md">
-    <q-card-section>
-      <q-item-label class="text-bold text-subtitle2">Card Actions</q-item-label>
-    </q-card-section>
-
-    <q-card-section>
-      <q-gutter>
-        <q-row class="q-col-gutter-md" align="center">
-          <q-col
-            v-for="action in actions"
-            :key="action.label"
-            cols="4"
-            sm="2"
-            class="flex flex-center"
-          >
-            <CardActionButton :icon="action.icon" :label="action.label" :onClick="action.onClick" />
-          </q-col>
-        </q-row>
-      </q-gutter>
-    </q-card-section>
-  </q-card>
+  <div class="card-actions">
+    <CardActionButton
+      v-for="action in actions"
+      :key="action.label"
+      :icon="action.icon"
+      :label="action.label"
+      :alt="action.alt"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-import CardActionButton from './CardActionButton.vue'
-import freezeIcon from 'assets/freeze-icon.svg'
-import limitIcon from 'assets/spend-limit-icon.svg'
-import gpayIcon from 'assets/gpay-icon.svg'
-import replaceIcon from 'assets/replace-icon.svg'
-import cancelIcon from 'assets/delete-icon.svg'
+import CardActionButton from './CardActionButton.vue';
+import freezeIcon from 'assets/freeze-icon.svg';
+import limitIcon from 'assets/spend-limit-icon.svg';
+import gpayIcon from 'assets/gpay-icon.svg';
+import cancelIcon from 'assets/delete-icon.svg';
+import replaceIcon from 'assets/replace-icon.svg';
 
 const actions = [
-  { icon: freezeIcon, label: 'Freeze Card', onClick: () => console.log('Freeze Card') },
-  { icon: limitIcon, label: 'Set Spend Limit', onClick: () => console.log('Set Spend Limit') },
-  { icon: gpayIcon, label: 'Add to GPay', onClick: () => console.log('Add to GPay') },
-  { icon: replaceIcon, label: 'Replace Card', onClick: () => console.log('Replace Card') },
-  { icon: cancelIcon, label: 'Cancel Card', onClick: () => console.log('Cancel Card') },
-]
+  {
+    icon: freezeIcon,
+    label: 'Freeze card',
+    alt: 'Freeze card icon',
+  },
+  {
+    icon: limitIcon,
+    label: 'Set spend limit',
+    alt: 'Set spend limit icon',
+  },
+  {
+    icon: gpayIcon,
+    label: 'Add to GPay',
+    alt: 'Add to GPay icon',
+  },
+  {
+    icon: replaceIcon,
+    label: 'Replace card',
+    alt: 'Replace card icon',
+  },
+  {
+    icon: cancelIcon,
+    label: 'Cancel card',
+    alt: 'Cancel card icon',
+  },
+];
 </script>
+
+<style lang="scss" scoped>
+.card-actions {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--secondary-background-color);
+  border-radius: 12px;
+  margin: 16px;
+  min-width: 0;
+
+  @media (max-width: $mobile-breakpoint) {
+    gap: 12px;
+    padding: 16px;
+    margin: 8px;
+  }
+}
+</style>

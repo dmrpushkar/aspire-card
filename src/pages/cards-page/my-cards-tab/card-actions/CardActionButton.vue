@@ -1,13 +1,56 @@
 <template>
-  <div class="flex flex-col items-center q-mx-sm cursor-pointer">
-    <QImg :src="icon" alt="action-icon" style="width: 40px; height: 40px;" />
-    <div class="text-caption text-center q-mt-xs">{{ label }}</div>
-  </div>
+  <button class="action-button">
+    <div class="icon-wrapper">
+      <img :src="icon" alt="action-icon" />
+    </div>
+    <span class="label">{{ label }}</span>
+  </button>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   icon: string
   label: string
-}>()
+}>();
 </script>
+
+<style lang="scss" scoped>
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark-blue-color);
+  font-size: 13px;
+  font-weight: 500;
+  width: 100%;
+  min-width: 0;
+
+  .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--primary-blue-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .label {
+    text-align: center;
+    line-height: 1.2;
+    width: 100%;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+</style>

@@ -34,7 +34,7 @@ import { NAV_ITEMS } from '../constants'
   display: flex;
   flex-direction: column;
   padding: 48px;
-  min-width: 340px;
+  width: 340px;
 }
 
 .logo-section {
@@ -92,7 +92,7 @@ import { NAV_ITEMS } from '../constants'
   }
 }
 
-@media (max-width: var(--mobile-breakpoint)) {
+@media (max-width: $mobile-breakpoint) {
   .web-only {
     display: none;
   }

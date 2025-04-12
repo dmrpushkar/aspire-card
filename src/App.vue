@@ -29,7 +29,7 @@ onBeforeUnmount(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .app-container {
   display: flex;
   height: 100vh;
@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
   width: 100%;
 }
 
-@media (max-width: var(--mobile-breakpoint)) {
+@media (max-width: $mobile-breakpoint) {
   .app-container {
     flex-direction: column;
   }

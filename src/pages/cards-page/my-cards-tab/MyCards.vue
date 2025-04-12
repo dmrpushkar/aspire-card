@@ -1,13 +1,12 @@
 <template>
-  <div class="cards-tab q-pa-md">
-    <div class="row q-col-gutter-md">
-      <div class="col-12 col-md-6">
+  <div class="cards-tab">
+    <div class="row">
+      <div class="col-12 col-md-6 left-column">
         <CardsCarousel />
-        <CardBalance />
         <CardActions />
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 right-column">
         <TransactionList />
       </div>
     </div>
@@ -20,13 +19,35 @@ import CardActions from './card-actions';
 import TransactionList from './transactions-list';
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cards-tab {
-  border: 1px dashed #ccc;
+  padding: 16px;
 }
 
-@media (max-width: var(--mobile-breakpoint)) {
+.row {
+  margin: -16px;
+
+  > div {
+    padding: 16px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
   .cards-tab {
+    padding: 0;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .left-column {
+    padding: 0;
+    background: var(--primary-background-color);
+  }
+
+  .right-column {
+    padding: 16px;
   }
 }
 </style>
