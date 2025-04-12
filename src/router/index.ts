@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { ROUTES } from 'src/constants';
-import HomePage from '../pages/HomePage.vue';
-import CardsPage from '../pages/CardsPage.vue';
-import PaymentsPage from '../pages/HomePage.vue';
-import CreditPage from '../pages/HomePage.vue';
-import SettingsPage from '../pages/HomePage.vue';
+import HomePage from '../pages/home-page/index.vue';
+import CardsPage from '../pages/cards-page/index.vue';
+import PaymentsPage from '../pages/home-page/index.vue';
+import CreditPage from '../pages/home-page/index.vue';
+import SettingsPage from '../pages/home-page/index.vue';
 
 export const routes = [
   {
