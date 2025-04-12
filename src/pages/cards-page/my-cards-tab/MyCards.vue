@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-12 col-md-6 right-column">
-        <TransactionList />
+        <CardDetails />
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import CardsCarousel from './cards-carousel';
 import CardActions from './card-actions';
-import TransactionList from './transactions-list';
+import CardDetails from './card-additional-info';
 </script>
 
 <style lang="scss" scoped>
