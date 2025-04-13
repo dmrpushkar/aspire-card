@@ -20,6 +20,7 @@
           :cardHolderName="card.cardholderName"
           :cardNumber="card.cardNumber"
           :thruDate="card.expiryDate"
+          :frozen="card.frozen"
           :cvv="card.cvv"
           :backgroundColor="getCardColor(index)"
         />

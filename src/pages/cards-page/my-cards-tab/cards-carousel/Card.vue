@@ -1,5 +1,5 @@
 <template>
-  <div class="debit-card" :style="{ backgroundColor }">
+  <div class="debit-card" :class="{ 'frozen': frozen }" :style="{ backgroundColor }">
     <div class="card-header">
       <img :src="aspireLogo" alt="aspire-logo" class="aspire-logo" />
     </div>
@@ -44,11 +44,13 @@ interface Props {
   cvv: string;
   backgroundColor?: string;
   hideNumber?: boolean;
+  frozen?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   backgroundColor: '#01D167',
   hideNumber: false,
+  frozen: false,
 });
 
 const maskedCardNumber = computed(() => {
@@ -67,6 +69,26 @@ const cardNumberGroups = computed(() => {
 .debit-card {
   width: 100%;
   aspect-ratio: 1.6;
+  transition: all 0.3s ease;
+
+  &.frozen {
+    filter: grayscale(0.8) brightness(0.8);
+    cursor: not-allowed;
+    position: relative;
+
+    &::after {
+      content: 'FROZEN';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: 4px;
+    }
+  }
 
   @media (min-width: $mobile-breakpoint) {
     max-width: 414px;
@@ -167,7 +189,7 @@ const cardNumberGroups = computed(() => {
   .card-details {
     gap: 24px;
     font-size: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 }
 </style>
