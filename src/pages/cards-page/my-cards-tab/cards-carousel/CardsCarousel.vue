@@ -7,6 +7,7 @@
       :navigation="false"
       class="text-black"
       v-model="selectedCardIndex"
+      @update:model-value="handleTransition"
     >
       <q-carousel-slide v-for="(card, index) in cards" :key="index" :name="index">
         <div class="show-number-row">
@@ -32,7 +33,7 @@
         :key="index"
         class="dot"
         :class="{ active: selectedCardIndex === index }"
-        @click="selectedCardIndex = index; cards[index] && emit('update:currentCardId', cards[index].id)"
+        @click="selectedCardIndex = index"
       />
     </div>
   </div>
@@ -51,6 +52,17 @@ const emit = defineEmits<{
   'update:currentCardId': [string]
 }>();
 
+const props = defineProps<{
+  cards: Card[]
+}>();
+
+const handleTransition = () => {
+  const index = selectedCardIndex.value;
+  if (props.cards[index]) {
+    emit('update:currentCardId', props.cards[index].id);
+  }
+};
+
 const toggleCardNumber = () => {
   hideCardNumber.value = !hideCardNumber.value;
 };
@@ -59,9 +71,6 @@ const cardColors = ['#01D167', '#7000FF', '#FF1B1B'];
 
 const getCardColor = (index: number): string => (cardColors[index % cardColors.length] ?? cardColors[0]) as string;
 
-defineProps<{
-  cards: Card[]
-}>();
 </script>
 
 <style lang="scss" scoped>
