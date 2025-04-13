@@ -3,12 +3,12 @@
     <img :src="homeIcon" alt="home-icon" class="home-icon" />
     <div class="header-top row items-end justify-between">
       <CardBalance />
-      <q-btn class="add-card-btn" unelevated no-caps>
+      <q-btn class="add-card-btn" unelevated no-caps @click="showNewCardModal = true">
         <img :src="addIcon" alt="add-icon" class="add-icon" />
         <span>New card</span>
       </q-btn>
     </div>
-
+    <AddCardModal v-model="showNewCardModal" />
     <div class="header-tabs">
       <div class="tab-buttons">
         <button
@@ -33,10 +33,12 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import CardBalance from './card-balance';
+import AddCardModal from './AddCardModal.vue';
 import addIcon from 'assets/add-icon.svg';
 import homeIcon from 'assets/home-icon.svg';
 
 const selectedTab = ref('self');
+const showNewCardModal = ref(false);
 
 const emit = defineEmits(['update:tab']);
 
@@ -45,7 +47,7 @@ watch(selectedTab, (newTab) => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .cards-header {
   width: 100%;
 }

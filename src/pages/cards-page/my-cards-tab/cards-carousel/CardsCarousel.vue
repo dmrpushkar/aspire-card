@@ -10,12 +10,13 @@
     >
       <q-carousel-slide v-for="(card, index) in cards" :key="index" :name="index">
         <div class="show-number-row">
-          <button class="show-number-btn">
+          <button class="show-number-btn" @click="toggleCardNumber">
             <img :src="eyeIcon" alt="show card number" />
-            <span>Show card number</span>
+            <span>{{ hideCardNumber ? 'Show' : 'Hide' }} card number</span>
           </button>
         </div>
         <CardComponent
+          :hideNumber="hideCardNumber"
           :cardHolderName="card.cardholderName"
           :cardNumber="card.cardNumber"
           :thruDate="card.expiryDate"
@@ -43,9 +44,15 @@ import CardComponent from './Card.vue';
 import type { Card } from '../../../../types';
 
 const selectedCardIndex = ref(0);
+const hideCardNumber = ref(true);
+
 const emit = defineEmits<{
   'update:currentCardId': [string]
 }>();
+
+const toggleCardNumber = () => {
+  hideCardNumber.value = !hideCardNumber.value;
+};
 
 const cardColors = ['#01D167', '#7000FF', '#FF1B1B'];
 
@@ -79,7 +86,8 @@ defineProps<{
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  width: 154px;
 
   img {
     width: 16px;

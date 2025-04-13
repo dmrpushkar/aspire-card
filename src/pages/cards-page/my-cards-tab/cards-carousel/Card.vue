@@ -43,14 +43,23 @@ interface Props {
   thruDate: string;
   cvv: string;
   backgroundColor?: string;
+  hideNumber?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   backgroundColor: '#01D167',
+  hideNumber: false,
+});
+
+const maskedCardNumber = computed(() => {
+  if (!props.hideNumber) return props.cardNumber;
+  const lastFourDigits = props.cardNumber.slice(-4);
+  const maskedPart = props.cardNumber.slice(0, -4).replace(/\d/g, '●');
+  return maskedPart + lastFourDigits;
 });
 
 const cardNumberGroups = computed(() => {
-  return props.cardNumber.match(/.{1,4}/g) || [];
+  return maskedCardNumber.value.match(/.{1,4}/g) || [];
 });
 </script>
 
@@ -140,9 +149,19 @@ const cardNumberGroups = computed(() => {
   }
 
   .card-number {
-    gap: 16px;
     font-size: 14px;
-    margin-bottom: 16px;
+    letter-spacing: 4px;
+    color: white;
+    margin: 24px 0;
+    font-family: 'Courier New', monospace;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    gap: 8px;
+
+    span {
+      min-width: 10px;
+      text-align: center;
+    }
   }
 
   .card-details {
