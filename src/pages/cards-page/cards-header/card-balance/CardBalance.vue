@@ -1,6 +1,6 @@
 <template>
   <div class="card-balance">
-    <div class="text-caption q-mb-sm">Available balance</div>
+    <div class="text-caption q-mb-sm">Account balance</div>
     <div class="balance-row">
       <div class="currency-badge">S$</div>
       <div class="balance-amount">{{ balance }}</div>
@@ -9,7 +9,14 @@
 </template>
 
 <script setup lang="ts">
-const balance = '3,000'
+import { useCardsStore } from 'stores/cards';
+import { computed } from 'vue';
+
+const cardsStore = useCardsStore();
+const balance = computed(() => {
+  const formatter = new Intl.NumberFormat('en-US');
+  return formatter.format(cardsStore.getTotalBalance);
+});
 </script>
 
 <style scoped>

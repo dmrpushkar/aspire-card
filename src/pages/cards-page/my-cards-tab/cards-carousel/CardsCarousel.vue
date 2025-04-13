@@ -15,12 +15,12 @@
             <span>Show card number</span>
           </button>
         </div>
-        <Card
-          :cardHolderName="card.holderName"
-          :cardNumber="card.number"
-          :thruDate="card.expiry"
+        <CardComponent
+          :cardHolderName="card.cardholderName"
+          :cardNumber="card.cardNumber"
+          :thruDate="card.expiryDate"
           :cvv="card.cvv"
-          :backgroundColor="card.type === 'Visa' ? '#01D167' : '#01D167'"
+          :backgroundColor="getCardColor(index)"
         />
       </q-carousel-slide>
     </q-carousel>
@@ -30,7 +30,7 @@
         :key="index"
         class="dot"
         :class="{ active: selectedCardIndex === index }"
-        @click="selectedCardIndex = index"
+        @click="selectedCardIndex = index; cards[index] && emit('update:currentCardId', cards[index].id)"
       />
     </div>
   </div>
@@ -39,26 +39,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import eyeIcon from 'assets/eye-icon.svg';
-import Card from './Card.vue';
+import CardComponent from './Card.vue';
+import type { Card } from '../../../../types';
 
 const selectedCardIndex = ref(0);
+const emit = defineEmits<{
+  'update:currentCardId': [string]
+}>();
 
-const cards = ref([
-  {
-    type: 'Visa',
-    number: '**** **** **** 1234',
-    expiry: '12/26',
-    holderName: 'Mark Henry',
-    cvv: '***',
-  },
-  {
-    type: 'MasterCard',
-    number: '**** **** **** 5678',
-    expiry: '08/25',
-    holderName: 'John Doe',
-    cvv: '***',
-  },
-]);
+const cardColors = ['#01D167', '#7000FF', '#FF1B1B'];
+
+const getCardColor = (index: number): string => (cardColors[index % cardColors.length] ?? cardColors[0]) as string;
+
+defineProps<{
+  cards: Card[]
+}>();
 </script>
 
 <style lang="scss" scoped>

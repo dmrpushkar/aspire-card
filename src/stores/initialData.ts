@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 const cards: Card[] = [
   {
     id: uuidv4(),
-    cardNumber: '4111111111111111',
+    cardNumber: '2789112511112211',
     cardholderName: 'Richard Hammond',
     expiryDate: '12/25',
     cvv: '123',
@@ -15,7 +15,7 @@ const cards: Card[] = [
   },
   {
     id: uuidv4(),
-    cardNumber: '4111111160401133',
+    cardNumber: '3535111160401133',
     cardholderName: 'James May',
     expiryDate: '01/29',
     cvv: '415',

@@ -2,12 +2,15 @@
   <div class="cards-tab">
     <div class="content-wrapper">
       <div class="left-section">
-        <CardsCarousel />
-        <CardActions />
+        <CardsCarousel
+          :cards="cardsStore.getCards"
+          @update:current-card-id="handleCurrentCardChange"
+        />
+        <CardActions :cardId="currentCardId"/>
       </div>
 
       <div class="right-section">
-        <CardDetails />
+        <CardDetails :cardId="currentCardId"/>
       </div>
     </div>
   </div>
@@ -17,6 +20,15 @@
 import CardsCarousel from './cards-carousel';
 import CardActions from './card-actions';
 import CardDetails from './card-additional-info';
+import { ref } from 'vue';
+import { useCardsStore } from 'stores/cards';
+
+const cardsStore = useCardsStore();
+const currentCardId = ref<string>('');
+
+const handleCurrentCardChange = (cardId: string) => {
+  currentCardId.value = cardId;
+};
 </script>
 
 <style lang="scss" scoped>
