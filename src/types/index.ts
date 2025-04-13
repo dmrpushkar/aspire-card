@@ -1,3 +1,7 @@
+import type { TRANSACTION_TYPES } from '../constants';
+
+type TransactionType = (typeof TRANSACTION_TYPES)[keyof typeof TRANSACTION_TYPES];
+
 export interface Card {
   id: string;
   cardNumber: string;
@@ -13,9 +17,7 @@ export interface Transaction {
   id: string;
   cardId: string;
   date: string;
-  description: string;
   amount: number;
-  type: 'credit' | 'debit';
-  category?: string;
-  merchant?: string;
+  type: TransactionType;
+  merchant: string;
 }

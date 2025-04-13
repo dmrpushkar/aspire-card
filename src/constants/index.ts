@@ -37,3 +37,8 @@ export const NAV_ITEMS = [
   { name: 'Credit', path: ROUTES.CREDIT, icon: NAVBAR_ICONS.CREDIT },
   { name: 'Settings', path: ROUTES.SETTINGS, icon: NAVBAR_ICONS.SETTINGS },
 ];
+
+export const TRANSACTION_TYPES = {
+  CREDIT: 'credit',
+  DEBIT: 'debit',
+} as const;
