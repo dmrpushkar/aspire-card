@@ -1,19 +1,16 @@
 <template>
-  <q-card flat class="q-pa-md">
-    <q-card-section>
-      <q-item-label class="text-bold text-subtitle2">Recent Transactions</q-item-label>
-    </q-card-section>
-
+  <q-card flat>
     <q-card-section class="q-pa-none">
-      <q-list separator>
+      <q-list>
         <TransactionItem
           v-for="(transaction, index) in transactions"
           :key="index"
           :icon="transaction.icon"
           :title="transaction.title"
-          :subtitle="transaction.subtitle"
+          :date="transaction.date"
           :amount="transaction.amount"
           :is-credit="transaction.isCredit"
+          :icon-background-color="transaction.iconBackgroundColor"
         />
       </q-list>
     </q-card-section>
@@ -30,23 +27,26 @@ const transactions = [
   {
     icon: netflixIcon,
     title: 'Netflix',
-    subtitle: 'Subscription • Apr 10',
+    date: 'Apr 10, 2025',
     amount: '-₹499.00',
     isCredit: false,
+    iconBackgroundColor: '#FF2F2F'
   },
   {
     icon: amazonIcon,
     title: 'Amazon',
-    subtitle: 'Shopping • Apr 9',
+    date: 'Apr 9, 2025',
     amount: '-₹1,299.00',
     isCredit: false,
+    iconBackgroundColor: '#01D167'
   },
   {
     icon: refundIcon,
     title: 'Refund',
-    subtitle: 'Refund • Apr 8',
+    date: 'Apr 8, 2025',
     amount: '+₹250.00',
     isCredit: true,
+    iconBackgroundColor: '#0062FF'
   },
 ]
 </script>

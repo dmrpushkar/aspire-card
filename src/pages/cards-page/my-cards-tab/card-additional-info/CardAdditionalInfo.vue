@@ -75,20 +75,38 @@ import recentTransactionsIcon from 'assets/recent-transactions-icon.svg';
     }
   }
 
+  .q-item__section--side > .q-icon {
+    font-size: 20px;
+  }
+
   :deep(.expand-icon) {
     color: var(--dark-blue-color);
+    background-color: #E5E9F2;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
   :deep(.q-expansion-item__content) {
     background-color: white;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     border: 1px solid #E5E9F2;
   }
 
   .content-wrapper {
-    padding: 16px 24px;
+    padding: 16px 16px;
     color: var(--dark-blue-color);
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .card-details {
+    padding: 8px;
   }
 }
 </style>

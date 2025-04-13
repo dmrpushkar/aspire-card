@@ -1,12 +1,12 @@
 <template>
   <div class="cards-tab">
     <div class="row">
-      <div class="col-12 col-md-6 left-column">
+      <div class="col-12 col-md-7 left-column">
         <CardsCarousel />
         <CardActions />
       </div>
 
-      <div class="col-12 col-md-6 right-column">
+      <div class="col-12 col-md-5 right-column">
         <CardDetails />
       </div>
     </div>
