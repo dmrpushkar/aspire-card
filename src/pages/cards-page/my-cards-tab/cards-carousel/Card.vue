@@ -46,7 +46,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  backgroundColor: '#01D167'
+  backgroundColor: '#01D167',
 });
 
 const cardNumberGroups = computed(() => {
@@ -57,7 +57,12 @@ const cardNumberGroups = computed(() => {
 <style lang="scss" scoped>
 .debit-card {
   width: 100%;
-  height: 244px;
+  aspect-ratio: 1.6;
+
+  @media (min-width: $mobile-breakpoint) {
+    max-width: 414px;
+    margin: 0 auto;
+  }
   border-radius: 15px;
   padding: 24px;
   color: white;
@@ -99,7 +104,8 @@ const cardNumberGroups = computed(() => {
   margin-bottom: 20px;
 }
 
-.thru, .cvv {
+.thru,
+.cvv {
   display: flex;
   gap: 10px;
 }

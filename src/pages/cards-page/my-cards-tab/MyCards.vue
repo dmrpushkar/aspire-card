@@ -1,12 +1,12 @@
 <template>
   <div class="cards-tab">
-    <div class="row">
-      <div class="col-12 col-md-7 left-column">
+    <div class="content-wrapper">
+      <div class="left-section">
         <CardsCarousel />
         <CardActions />
       </div>
 
-      <div class="col-12 col-md-5 right-column">
+      <div class="right-section">
         <CardDetails />
       </div>
     </div>
@@ -21,13 +21,45 @@ import CardDetails from './card-additional-info';
 
 <style lang="scss" scoped>
 .cards-tab {
-  padding: 16px;
+  padding: 32px;
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 16px;
+  }
 }
 
-.row {
-  margin: -16px;
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+  gap: 32px;
+  padding: 0 32px;
 
-  > div {
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+}
+
+.left-section {
+  width: 414px;
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+    background-color: #0C365A;
+    padding: 24px 0 0;
+  }
+}
+
+.right-section {
+  flex: 1;
+  max-width: 480px;
+  margin-top: 22px;
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-top: 0;
     padding: 16px;
   }
 }
@@ -35,6 +67,11 @@ import CardDetails from './card-additional-info';
 @media (max-width: $mobile-breakpoint) {
   .cards-tab {
     padding: 0;
+  }
+
+  .left-section {
+    background-color: #0C365A;
+    padding: 24px 0 0;
   }
 
   .row {

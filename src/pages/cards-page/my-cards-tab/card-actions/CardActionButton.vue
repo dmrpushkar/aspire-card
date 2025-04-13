@@ -19,7 +19,6 @@ defineProps<{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -40,8 +39,8 @@ defineProps<{
     justify-content: center;
 
     img {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
     }
   }
 

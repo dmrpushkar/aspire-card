@@ -66,7 +66,13 @@ const cards = ref([
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+
+  @media (min-width: $mobile-breakpoint) {
+    max-width: 414px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .show-number-btn {
@@ -88,7 +94,8 @@ const cards = ref([
 
 .carousel-container {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+  width: 100%;
 }
 
 .q-carousel {
@@ -97,7 +104,7 @@ const cards = ref([
 
 .navigation-dots {
   position: absolute;
-  bottom: -24px;
+  bottom: -16px;
   left: 0;
   right: 0;
   display: flex;
@@ -109,18 +116,22 @@ const cards = ref([
     width: 6px;
     height: 6px;
     border-radius: 3px;
-    background-color: #E5E9F2;
+    background-color: #e5e9f2;
     cursor: pointer;
     transition: all 0.3s ease;
 
     &.active {
       width: 16px;
-      background-color: #01D167;
+      background-color: #01d167;
     }
   }
 }
 
 @media (max-width: $mobile-breakpoint) {
+  .carousel-container {
+    margin: 0 8px 40px;
+    width: calc(100% - 16px);
+  }
   .q-carousel {
     height: auto;
     background-color: transparent;
@@ -130,19 +141,18 @@ const cards = ref([
   }
 
   .show-number-row {
-    margin-bottom: -16px;
+    margin-bottom: -24px;
   }
 
   .show-number-btn {
     background: white !important;
     border-radius: 8px;
-    padding: 8px 16px 20px !important;
+    padding: 4px 12px 28px 12px !important;
     cursor: pointer;
     display: inline-flex;
-    align-items: flex-start;
 
     span {
-      color: #01D167;
+      color: #01d167;
       font-size: 12px;
       font-weight: 500;
       padding-top: 2px;

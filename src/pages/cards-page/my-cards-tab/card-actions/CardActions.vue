@@ -61,7 +61,8 @@ const actions = [
   @media (max-width: $mobile-breakpoint) {
     gap: 12px;
     padding: 16px;
-    margin: 8px;
+    margin: 0;
+    border-radius: 24px 24px 0 0;
   }
 }
 </style>

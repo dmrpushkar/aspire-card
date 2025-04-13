@@ -62,6 +62,10 @@ import recentTransactionsIcon from 'assets/recent-transactions-icon.svg';
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    > .q-focusable {
+      margin-left: auto;
+    }
   }
 
   .header-content {
@@ -70,13 +74,13 @@ import recentTransactionsIcon from 'assets/recent-transactions-icon.svg';
     gap: 12px;
 
     img.q-icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
   }
 
-  .q-item__section--side > .q-icon {
-    font-size: 20px;
+  :deep(.q-item__section--side > .q-icon) {
+    font-size: 16px !important;
   }
 
   :deep(.expand-icon) {
