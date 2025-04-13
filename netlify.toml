@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "npm install && npm run postinstall && npm run build"
+  publish = "dist/spa"
 
 [build.environment]
   NODE_VERSION = "18"
