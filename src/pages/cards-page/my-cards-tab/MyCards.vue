@@ -24,7 +24,7 @@ import { ref } from 'vue';
 import { useCardsStore } from 'stores/cards';
 
 const cardsStore = useCardsStore();
-const currentCardId = ref<string>('');
+const currentCardId = ref<string>(cardsStore.getCards[0]?.id ?? '');
 
 const handleCurrentCardChange = (cardId: string) => {
   currentCardId.value = cardId;

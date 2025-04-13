@@ -13,11 +13,21 @@ export interface Card {
   currency: string;
 }
 
+export type MerchantType = 'Swiggy' | 'Amazon' | 'Refund' | 'Hamleys' | 'Starbucks' | 'CrowssWord' | 'Ikea' | 'Apollo';
+
 export interface Transaction {
   id: string;
   cardId: string;
   date: string;
   amount: number;
   type: TransactionType;
-  merchant: string;
+  merchant: MerchantType;
+}
+
+export interface TransactionDisplay extends Omit<Transaction, 'amount'> {
+  icon: string;
+  title: string;
+  isCredit: boolean;
+  iconBackgroundColor: string;
+  amount: string;
 }

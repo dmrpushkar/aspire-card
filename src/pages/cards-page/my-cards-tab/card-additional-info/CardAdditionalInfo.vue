@@ -27,7 +27,7 @@
         </div>
       </template>
       <div class="content-wrapper">
-        <TransactionList />
+        <TransactionList :cardId="props.cardId" />
       </div>
     </q-expansion-item>
   </div>
@@ -37,6 +37,10 @@
 import TransactionList from '../transactions-list';
 import cardDetailsIcon from 'assets/card-details-icon.svg';
 import recentTransactionsIcon from 'assets/recent-transactions-icon.svg';
+
+const props = defineProps<{
+  cardId: string
+}>();
 </script>
 
 <style lang="scss" scoped>

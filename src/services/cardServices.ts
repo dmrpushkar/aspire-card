@@ -15,16 +15,6 @@ export class CardService {
     return new Promise((resolve) => setTimeout(resolve, delay));
   }
 
-  async getCards(): Promise<Card[]> {
-    this.store.setLoader('getCards', true);
-    try {
-      await this.simulateApiCall(API_DELAYS.GET_CARDS);
-      return this.store.getCards;
-    } finally {
-      this.store.setLoader('getCards', false);
-    }
-  }
-
   async getTransactions(cardId: string): Promise<Transaction[]> {
     this.store.setLoader('getTransactions', true);
     try {
@@ -46,6 +36,7 @@ export class CardService {
   }
 
   async setCardFreeze(cardId: string, frozen: boolean): Promise<void> {
+    console.log('Freeze action clicked', cardId, frozen);
     this.store.setLoader('setCardFreeze', true);
     try {
       await this.simulateApiCall(API_DELAYS.SET_CARD_FREEZE);
