@@ -1,6 +1,18 @@
 # Aspire Card (aspire-card)
 
-A Quasar Project
+A Vue3 Quasar Project.
+
+## Features
+
+- Interactive Card Management
+  - Swipeable card carousel
+  - Card number masking/unmasking
+  - Card freezing functionality
+  - Multiple cards support with unique colors
+
+- UI/UX
+  - Responsive design (Mobile & Desktop)
+  - Smooth animations and transitions
 
 ## Install the dependencies
 ```bash
@@ -11,29 +23,11 @@ npm install
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev
+npm run dev
 ```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
 ### Build the app for production
 ```bash
-quasar build
+npm run build
 ```
 
 ### Customize the configuration

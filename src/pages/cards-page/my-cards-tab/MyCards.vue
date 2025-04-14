@@ -4,7 +4,7 @@
       <div class="left-section">
         <CardsCarousel
           :cards="cardsStore.getCards"
-          @update:current-card-id="handleCurrentCardChange"
+          @update:currentCardId="handleCurrentCardChange"
         />
         <CardActions :cardId="currentCardId"/>
       </div>
@@ -27,6 +27,7 @@ const cardsStore = useCardsStore();
 const currentCardId = ref<string>(cardsStore.getCards[0]?.id ?? '');
 
 const handleCurrentCardChange = (cardId: string) => {
+  console.log('Card ID changed to:', cardId);
   currentCardId.value = cardId;
 };
 </script>

@@ -7,7 +7,6 @@
       :navigation="false"
       class="text-black"
       v-model="selectedCardIndex"
-      @update:model-value="handleTransition"
     >
       <q-carousel-slide v-for="(card, index) in cards" :key="index" :name="index">
         <div class="show-number-row">
@@ -40,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import eyeIcon from 'assets/eye-icon.svg';
 import CardComponent from './Card.vue';
 import type { Card } from '../../../../types';
@@ -56,12 +55,11 @@ const props = defineProps<{
   cards: Card[]
 }>();
 
-const handleTransition = () => {
-  const index = selectedCardIndex.value;
+watch(selectedCardIndex, (index) => {
   if (props.cards[index]) {
     emit('update:currentCardId', props.cards[index].id);
   }
-};
+});
 
 const toggleCardNumber = () => {
   hideCardNumber.value = !hideCardNumber.value;

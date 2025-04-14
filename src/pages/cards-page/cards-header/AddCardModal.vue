@@ -1,7 +1,7 @@
 <template>
   <q-dialog
     :model-value="modelValue"
-    @update:model-value="val => emit('update:modelValue', val)"
+    @update:model-value="handleModelValueChange"
     persistent
   >
     <q-card class="new-card-modal">
@@ -11,35 +11,14 @@
         <q-btn icon="close" flat round dense @click="emit('update:modelValue', false)" />
       </q-card-section>
 
-      <q-card-section class="q-pt-md">
+      <q-card-section class="q-pt-md q-px-lg">
         <q-form @submit="onSubmit" class="q-gutter-md">
-          <q-input
-            v-model="newCard.cardholderName"
-            label="Cardholder Name"
-            :rules="[val => !!val || 'Name is required']"
-          />
-          <q-input
-            v-model="newCard.cardNumber"
-            label="Card Number"
-            mask="#### #### #### ####"
-            :rules="[val => !!val && val.replace(/\s/g, '').length === 16 || 'Valid card number required']"
-          />
-          <div class="row q-col-gutter-sm">
-            <div class="col-6">
+          <div class="row q-col-gutter-md">
+            <div class="col-12">
               <q-input
-                v-model="newCard.expiryDate"
-                label="Expiry Date"
-                mask="##/##"
-                :rules="[val => !!val && /^\d{2}\/\d{2}$/.test(val) || 'Valid date required']"
-              />
-            </div>
-            <div class="col-6">
-              <q-input
-                v-model="newCard.cvv"
-                label="CVV"
-                type="password"
-                mask="###"
-                :rules="[val => !!val && val.length === 3 || 'Valid CVV required']"
+                v-model="cardholderName"
+                label="Cardholder Name"
+                :rules="[val => !!val || 'Name is required']"
               />
             </div>
           </div>
@@ -66,6 +45,21 @@ import { useCardsStore } from 'stores/cards';
 import { v4 as uuidv4 } from 'uuid';
 import { CardService } from '../../../services/cardServices';
 
+const generateCardNumber = () => {
+  return Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('');
+};
+
+const generateExpiryDate = () => {
+  const today = new Date();
+  const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+  const year = String((today.getFullYear() + 3) % 100).padStart(2, '0');
+  return `${month}/${year}`;
+};
+
+const generateCVV = () => {
+  return String(Math.floor(Math.random() * 900) + 100);
+};
+
 defineProps<{
   modelValue: boolean
 }>();
@@ -76,35 +70,32 @@ const emit = defineEmits<{
 
 const cardsStore = useCardsStore();
 
-const newCard = ref({
-  cardholderName: '',
-  cardNumber: '',
-  expiryDate: '',
-  cvv: '',
-});
+const cardholderName = ref('');
+
+const cardService = new CardService(cardsStore);
+
+const handleModelValueChange = (value: boolean) => {
+  if (!value) {
+    cardholderName.value = '';
+  }
+  emit('update:modelValue', value);
+};
 
 const onSubmit = async () => {
   try {
-    console.log(newCard.value);
-    const card = {
+    const newCard = {
       id: uuidv4(),
-      cardholderName: newCard.value.cardholderName.trim(),
-      cardNumber: newCard.value.cardNumber.trim().replace(/\s/g, ''),
-      expiryDate: newCard.value.expiryDate.trim(),
-      cvv: newCard.value.cvv.trim(),
-      frozen: false,
+      cardNumber: generateCardNumber(),
+      cardholderName: cardholderName.value,
+      expiryDate: generateExpiryDate(),
+      cvv: generateCVV(),
       balance: 0,
-      currency: 'SGD',
+      frozen: false,
+      currency: 'USD',
     };
-
-    await new CardService(cardsStore).addCard(card);
+    await cardService.addCard(newCard);
+    cardholderName.value = '';
     emit('update:modelValue', false);
-    newCard.value = {
-      cardholderName: '',
-      cardNumber: '',
-      expiryDate: '',
-      cvv: '',
-    };
   } catch (error) {
     console.error('Failed to add card:', error);
   }
